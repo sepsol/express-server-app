@@ -1,3 +1,5 @@
+require('dotenv').config();  // loads 'dotenv' library which reads .env file and allows us to set our own environment variables during development
+
 const Joi = require('joi');
 const express = require('express');
 const app = express();
