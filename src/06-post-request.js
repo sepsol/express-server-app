@@ -31,6 +31,8 @@ app.use(express.json());
 // so we basically told our app to convert the requests to json with express
 // we're basically using json as a 'middleware' in our 'request processing pipeline'
 
+// app.use is also called middle-ware on servers:
+// which means that it'll run after we get the request and before we return the response
 
 // so now we can process 'post' methods:
 app.post('/api/users', (req, res) => {
