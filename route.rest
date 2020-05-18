@@ -1,0 +1,31 @@
+GET http://localhost:3000/
+
+###
+
+GET http://localhost:3000/api/users
+
+###
+
+GET http://localhost:3000/api/users/2
+
+###
+
+POST http://localhost:3000/api/users
+
+{
+  "fname": "sep",
+  "lname": "sol"
+}
+
+###
+
+PUT http://localhost:3000/api/users/2
+
+{
+  "fname": "shid",
+  "lname": "okht"
+}
+
+###
+
+DELETE http://localhost:3000/api/users/1
