@@ -17,7 +17,7 @@ app.get('/api/users', (req, res) => res.send(users));
 
 // we can retreive an object from that array like so:
 app.get('/api/users/:id', (req, res) => { 
-  const user = users.find((user) => user.id /*number*/ === parseInt(req.params.id /*string*/) /*number*/);
+  const user = users.find((user) => user.id /*number*/ === parseInt(req.params.id /*string*/) /*number*/);   // we have to convert the id concatenated to request route which is a string to number for this find method to work properly
   if (!user) {res.status(404).send('User does not exist.')} // we'll return conventional http status code of 404 when nothing's found, along with a message indicating that to the user
   res.send(user); // if the object is found in the array, we'll return it
 });
