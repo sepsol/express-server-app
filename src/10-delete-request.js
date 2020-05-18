@@ -21,7 +21,7 @@ app.get('/api/users/:id', (req, res) => {
   // 2  reqBody => no
   // 3  res => calculate => send
 
-  const user = users.find(user => userid=== parseInt(req.params.id));
+  const user = users.find(user => user.id=== parseInt(req.params.id));
   if (!user) return res.status(404).send('User not found!');
 
   res.send(user);
