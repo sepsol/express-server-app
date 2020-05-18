@@ -1,7 +1,7 @@
 // first do => npm init
 // then => npm i express
-const express = require('express'); // load ExpressJS to the app
-const app = express();              // run create app function and save the return object in a variable
+const express = require('express'); // load ExpressJS create app function to the app
+const app = express();              // run ExpressJS create app function and save the returned object in a variable
 
 // this object has http methods inside itself
 // app.get()
