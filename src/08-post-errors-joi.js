@@ -14,21 +14,6 @@ const users = [
   {id: 3, fname: 'Sahand', lname: 'Soltanieh'}
 ];
 
-
-
-// to handle error checking with joi,
-// first we have to define a 'schema'.
-// a schema defines the shape of our objects (in our array of objects).
-// e.g. what properties do we have, what is the type of each property, do we have an email, do we have a string or a number, what is the minimum length, etc...
-
-// so we'll define a 'schema object' to validate our 'request object' against it:
-const schema = {
-  fname: Joi.string().min(3),
-  lname: Joi.string().max(5).required()
-};
-
-
-
 app.get('/', (req, res) => res.send('Hello, world!'));
 app.get('/api/users', (req, res) => res.send(users));
 app.get('/api/users/:id', (req, res) => {
@@ -42,9 +27,20 @@ app.get('/api/users/:id', (req, res) => {
 app.post('/api/users', (req, res) => {
 
 
+  // to handle error checking with joi,
+  // first we have to define a 'schema'.
+  // a schema defines the shape of our objects (in our array of objects).
+  // e.g. what properties do we have, what is the type of each property, do we have an email, do we have a string or a number, what is the minimum length, etc...
 
+  // so we'll define a 'schema object' to validate our 'request object' against it:
+  const schema = {
+    fname: Joi.string().min(3),
+    lname: Joi.string().max(5).required()
+  };
+  
   // now we have to validate our 'request object' against our 'schema object':
   const result = Joi.validate(req.body, schema);  // this returns an object which we'll store in result
+
 
   console.log(result)
   // returns this object:
@@ -71,6 +67,7 @@ app.post('/api/users', (req, res) => {
   //   ]
   // }
 
+  
   // so in case of an errorwe want to return only the message property of the first index (or all indeces by looping) details array of error property of result object :)
   if (result.error) {
     res.status(400).send(result.error.details[0].message);
@@ -78,7 +75,6 @@ app.post('/api/users', (req, res) => {
   }
 
   // now test the output by sending some faulty values to the server with postman
-
 
 
   const user = {
