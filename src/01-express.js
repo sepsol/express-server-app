@@ -17,7 +17,7 @@ app.get( '/api/users', (req, res) => {res.send( [2, 3, 5, 7] )} );
 
 
 // that route has to have a main domain for it to be hosted on to be able to listen to events
-app.listen( 3000, () => {console.log(`Listening on port 3000...`)} )
+app.listen( 3000, (event) => {console.log(`Listening on port 3000...\n${event}`)} )
 // now our server is hosted locally at port 3000 => localhost:3000
 // and all of the routes above will be concatenated to this domain address as this => localhost:3000/api/users
 
