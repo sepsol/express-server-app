@@ -1,10 +1,10 @@
 
 # Version Numbers:
 
-    5 . 19  . 2
-    ^----^----^
-major  minor  patch
-ver.   ver.   ver.
+        5 . 19  . 2
+        ^----^----^
+    major  minor  patch
+    ver.   ver.   ver.
 
 
 ## In package.json:
