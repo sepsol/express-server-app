@@ -33,3 +33,5 @@ app.listen(port, () => console.log(`Looking for the PORT Environment Variable...
 // exit the app's process (ctrl+c)
 // restart the app (since port is a const)
 // and now the app will open on port 3210 by default
+
+// you can also set your environment variable temporarily inside .env file of this project
