@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const Joi = require('joi');
 const express = require('express');
 const app = express();
@@ -73,8 +75,8 @@ app.delete('/api/users/:id', (req, res) => {
   const user = users.find(user => user.id === parseInt(req.params.id));
   if (!user) return res.status(404).send('User not found!');
 
-  const index = users.indexOf(user);  // goes in the array and searches for 'user' item and returns its index
-  users.splice(index, 1);   // removes the 1 item from our specified index from the users array
+  const index = users.indexOf(user);
+  users.splice(index, 1);
 
   res.send(user);
 });
