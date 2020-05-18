@@ -16,7 +16,7 @@ app.get('/', (req, res) => res.send('Hello, world!'));
 app.get('/api/users', (req, res) => res.send(users));
 app.get('/api/users/:id', (req, res) => {
   const user = users.find(user => user.id === parseInt(req.params.id));
-  if (!user) {res.status(404).send('User not found!')}
+  if (!user) return res.status(404).send('User not found!');
   res.send(user);
 });
 
@@ -24,10 +24,7 @@ app.get('/api/users/:id', (req, res) => {
 app.post('/api/users', (req, res) => {
 
   const { error } = validateNewUser(req.body);
-  if (error) {
-    res.status(400).send(error.details[0].message);
-    return;
-  }
+  if (error) return res.status(400).send(error.details[0].message);
 
   const user = {
     id: users.length + 1,
@@ -52,10 +49,10 @@ app.put('/api/users/:id', (req, res) => {
   //        6. return the updated course (200 - OK which is returned by default)
 
   const user = users.find(user => user.id === parseInt(req.params.id));
-  if (!user) res.status(404).send('User not found!');
+  if (!user) return res.status(404).send('User not found!');
 
   const { error } = validateNewUser(req.body);  // { error } === result.error  => because of 'object destructuring'
-  if (error) {res.status(400).send(error.details[0].message); return;}
+  if (error) return res.status(400).send(error.details[0].message);
 
   user.fname = req.body.fname;
   user.lname = req.body.lname;

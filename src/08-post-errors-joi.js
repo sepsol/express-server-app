@@ -18,7 +18,10 @@ app.get('/', (req, res) => res.send('Hello, world!'));
 app.get('/api/users', (req, res) => res.send(users));
 app.get('/api/users/:id', (req, res) => {
   const user = users.find(user => user.id === parseInt(req.params.id));
-  if (!user) {res.status(404).send('User not found!')}
+  if (!user) {
+    res.status(404).send('User not found!');
+    return;
+  }
   res.send(user);
 });
 
